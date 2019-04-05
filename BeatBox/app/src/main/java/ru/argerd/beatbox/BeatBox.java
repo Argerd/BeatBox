@@ -22,8 +22,14 @@ public class BeatBox {
     private List<Sound> sounds = new ArrayList<>();
     private SoundPool soundPool;
 
+    private float speed = 1;
+
     public void release() {
         soundPool.release();
+    }
+
+    public void setSpeed(float speed) {
+        this.speed = speed;
     }
 
     public void play(Sound sound) {
@@ -31,7 +37,7 @@ public class BeatBox {
             return;
         }
         soundPool.play(sound.getSoundId(),
-                1.0f, 1.0f, 1, 0, 1.0f);
+                1.0f, 1.0f, 1, 0, speed);
     }
 
     private void load(Sound sound) throws IOException {
